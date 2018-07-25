@@ -5,15 +5,35 @@ const element = {
     id: 'container',
     children: [
       { type: 'input', props: { value: 'foo', type: 'text' } },
-      { type: 'a', props: { href: 'www.lingobus.com' }},
-      { type: 'h3', props: {  } },
+      { type: 'a', props: {
+        href: 'www.lingobus.com',
+        children: [{
+          type: 'TEXT',
+          props: { nodeValue: 'baidu' }
+        }]
+      }},
+      { type: 'h3', props: { children: [{
+        type: 'TEXT',
+        props: { nodeValue: '被今天' }
+      }] } },
+      {
+        type: 'span', props: {
+          children: [
+            { type: 'TEXT', props: {nodeValue: 'hello'} }
+          ]
+        }
+      }
     ]
   }
 }
 
 function render(element, parentDom) {
   const { type, props } = element
-  const dom = document.createElement(type)
+
+  //处理 文本节点
+  const dom = type === 'TEXT' ?
+    document.createTextNode('')
+    : document.createElement(type)
 
   // 事件监听
   const isEvent = name => /^on/.test(name)
