@@ -15,10 +15,15 @@ console.log(React)
 //     onclick: () => { alert('clicked') }
 //   }, "clickMe"))
 
+const data = [ 'xiaming', 'xiaohei', 'xiaobai' ]
+
 const element = (
-  <h1>hello
-    <span>world</span>
-  </h1>
+  <div id="container">
+    <h2>title</h2>
+    <p>name</p>
+    <input type="text"/>
+    <button onClick={e => alert('clicked')}>click me</button>
+  </div>
 )
 
 
