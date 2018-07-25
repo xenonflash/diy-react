@@ -1,19 +1,5 @@
 const TEXT_ELEMENT = 'TEXT'
 
-// 描述节点的 对象
-const element = createElement('div', {
-  id: 'container',
-  style: 'border: 1px solid red; min-height: 200px'
-},
-  createElement('h2', {
-    style: "color: #666"
-  }, 'hello this is a h2',
-    createElement('span', { style: 'font-size: 14px' }, 'this is a span in h2')),
-  createElement('input'),
-  createElement('button', {
-    onclick: () => { alert('clicked') }
-  }, "clickMe"))
-
 /**
  * 返回element
  * @param {*} type
@@ -35,6 +21,7 @@ function createElement(type, configs, ...args) {
     })
   return { type, props }
 }
+
 /**
  * 创建文字节点
  * @param {*} str
@@ -48,8 +35,11 @@ function createTextElement(str) {
   }
 }
 
-
-
+/**
+ *  将 vnode 渲染到 元素上
+ * @param {*} element
+ * @param {*} parentDom
+ */
 function render(element, parentDom) {
   const { type, props } = element
 
