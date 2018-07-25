@@ -1,5 +1,4 @@
 import React from '../lib/index.js'
-console.log(React)
 
 // 描述节点的 对象
 // const element = React.createElement('div', {
@@ -15,16 +14,17 @@ console.log(React)
 //     onclick: () => { alert('clicked') }
 //   }, "clickMe"))
 
-const data = [ 'xiaming', 'xiaohei', 'xiaobai' ]
+const data = 'name is a'
 
 const element = (
   <div id="container">
-    <h2>title</h2>
-    <p>name</p>
+    <h2>hello jsx</h2>
+    <p>{data}</p>
     <input type="text"/>
     <button onClick={e => alert('clicked')}>click me</button>
   </div>
 )
+
 
 
 React.render(element, document.getElementById('app'))
