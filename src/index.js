@@ -1,27 +1,46 @@
 import React from '../lib/index.js'
 
-// 描述节点的 对象
-// const element = React.createElement('div', {
-//   id: 'container',
-//   style: 'border: 1px solid red; min-height: 200px'
-// },
-//   React.createElement('h2', {
-//     style: "color: #666"
-//   }, 'hello this is a h2',
-//     React.createElement('span', { style: 'font-size: 14px' }, 'this is a span in h2')),
-//   React.createElement('input'),
-//   React.createElement('button', {
-//     onclick: () => { alert('clicked') }
-//   }, "clickMe"))
 
-const data = 'name is a'
+const data = [
+  {
+    id: 1,
+    name: 'this is options a',
+    like: 30
+  },
+  {
+    id: 2,
+    name: 'this is options v',
+    like: 11
+  },
+  {
+    id: 3,
+    name: 'this is options b',
+    like: 1
+  },
+  {
+    id: 4,
+    name: 'this is options a',
+    like: 2
+  },
+]
+
+function renderList() {
+  return data.map(d => (
+    <div className="item">
+      <button onClick={addLike.bind(null, d.id)}>❤️</button>
+      <i>{d.like}</i>
+      <span>{d.name}</span>
+    </div>
+  ))
+}
+function addLike(id) {
+  console.log(`addLike`, id)
+}
 
 const element = (
   <div id="container">
-    <h2>hello jsx</h2>
-    <p>{data}</p>
-    <input type="text"/>
-    <button onClick={e => alert('clicked')}>click me</button>
+    <h2 style="color: red">hello jsx</h2>
+    {renderList()}
   </div>
 )
 
