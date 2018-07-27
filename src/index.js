@@ -1,5 +1,6 @@
-import React from '../lib/index.js'
+import React, { Component } from '../lib/index.js'
 
+console.log(Component)
 
 let data = [
   {
@@ -24,28 +25,42 @@ let data = [
   },
 ]
 
-function renderList() {
-  return data.map(d => (
-    <div className="item">
-      <button onClick={addLike.bind(null, d.id)}>❤️</button>
-      <i>{d.like}</i>
-      <span>{d.name}</span>
-    </div>
-  ))
-}
-function addLike(id) {
-  console.log(`addLike`, id)
-  data = data.map(d => {
-    return d.id == id ? Object.assign({}, d, { like: ++d.like }) : d
-  })
-  React.render(app(), document.getElementById('app'))
+// function renderList() {
+//   return data.map(d => (
+//     <div className="item">
+//       <button onClick={addLike.bind(null, d.id)}>❤️</button>
+//       <i>{d.like}</i>
+//       <span>{d.name}</span>
+//     </div>
+//   ))
+// }
+// function addLike(id) {
+//   console.log(`addLike`, id)
+//   data = data.map(d => {
+//     return d.id == id ? Object.assign({}, d, { like: ++d.like }) : d
+//   })
+//   React.render(app(), document.getElementById('app'))
+// }
+
+class Hello extends Component{
+  constructor(props){
+    super(props)
+    this.state.value = 'xiaoming'
+  }
+  handleClick() {
+    this.setState({
+      value: '小明'
+    })
+  }
+  render() {
+    return (
+      <div>
+        <h3>{this.props.msg + this.state.value}</h3>
+        <button onClick={this.handleClick.bind(this)}>change</button>
+      </div>
+    )
+  }
 }
 
 
-const app = () => (
-  <div id="container">
-    <h2 style="color: red">hello jsx</h2>
-    {renderList()}
-  </div>
-)
-React.render(app(), document.getElementById('app'))
+React.render(<Hello msg="hello"/>, document.getElementById('app'))
